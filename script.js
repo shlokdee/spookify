@@ -111,3 +111,47 @@ function playnote(freq){
     tone2.stop(audioCtx.currentTime+1);
     lfo.stop(audioCtx.currentTime+1);
 }
+
+const canvas=document.getElementById("dropper")
+const ctx = canvas.getContext("2d");
+
+var xposlight=[80, 130, 180, 230, 280, 330, 380]
+var xposdark=[104, 154, 254,304 ,354 ]
+var keylenlight=7
+var keylendark=5
+
+
+
+
+ctx.fillStyle="#39FF14";
+var y=290;
+var speed=3.33;
+
+var pattern=[2,5,2,7]
+var delay=400
+
+function animate(){
+    
+    if (y>=canvas.height){
+        return;
+    }
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    y += speed;
+    for (let i=0; i<xposlight.length; i++){
+        ctx.fillStyle="#39FF14";
+        ctx.fillRect(xposlight[i], y, 40, 80)
+    }
+    for (let i=0; i<xposdark.length; i++){
+        ctx.fillStyle="#ff1414";
+        ctx.fillRect(xposdark[i], y, 40, 80)
+    }
+
+
+    requestAnimationFrame(animate);
+}
+
+function animationstart(){
+    y=0;
+    animate();
+}
+
