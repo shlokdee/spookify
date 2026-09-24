@@ -127,30 +127,35 @@ ctx.fillStyle="#39FF14";
 var y=290;
 var speed=3.33;
 
-var pattern=[2,5,2,7]
+var pattern=[2,5,2,6]
 var delay=400
 
+var animid=null
+
 function animate(){
-    
-    if (y>=canvas.height){
-        return;
-    }
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     y += speed;
-    for (let i=0; i<xposlight.length; i++){
-        ctx.fillStyle="#39FF14";
-        ctx.fillRect(xposlight[i], y, 40, 80)
-    }
-    for (let i=0; i<xposdark.length; i++){
-        ctx.fillStyle="#ff1414";
-        ctx.fillRect(xposdark[i], y, 40, 80)
+    for (let i=0;i<pattern.length; i++){
+        ctx.fillRect(xposlight[pattern[i]], y-i*80, 40, 80)
+
     }
 
+    var lastnotey=y-(pattern.length-1)*80
+    if (lastnotey<400){
+        animid=requestAnimationFrame(animate);
+    }
+    
 
-    requestAnimationFrame(animate);
+
+    
 }
 
 function animationstart(){
+
+    if (animid){
+        cancelAnimationFrame(animid)
+    }
+
     y=0;
     animate();
 }
