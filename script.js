@@ -6,7 +6,9 @@ var keyboard=document.getElementById("keyboard")
 
 for (let i=0; i<notes.length; i++){
     const button=document.createElement("button");
-    button.addEventListener("click", playnote(notes[i]))
+    button.addEventListener("click", function(){
+        playnote(notes[i])
+    })
     button.classList.add("whitebutton")
     keyboard.appendChild(button);
 
