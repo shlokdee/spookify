@@ -1,25 +1,48 @@
 
 
     var audioCtx = new AudioContext();
-var notes=[261.63, 293.66, 329.63, 349.23, 392, 440, 493.88]
-var keyboardkeys=["a","s","d","f","g","h","j" ]
+var lightnotes=[261.63, 293.66, 329.63, 349.23, 392, 440, 493.88]
+var darknotes=[277.18, 311.13, 369.99, 415.30, 466.16]
+var lightkeys=["a","s","d","f","g","h","j" ]
+var darkkeys=["w", "e", "t", "y", "u"]
 var keyboard=document.getElementById("keyboard")
 
-for (let i=0; i<notes.length; i++){
+for (let i=0; i<lightnotes.length; i++){
     const button=document.createElement("button");
+    button.textContent=lightkeys[i]
     button.addEventListener("click", function(){
-        playnote(notes[i])
+        playnote(lightnotes[i])
     })
-    button.classList.add("whitebutton")
+    button.classList.add("lightbutton")
+    keyboard.appendChild(button);
+
+}
+
+for (let i=0; i<darknotes.length; i++){
+    const button=document.createElement("button");
+    button.textContent=darkkeys[i]
+    button.addEventListener("click", function(){
+        playnote(darknotes[i])
+    })
+    button.classList.add("darkbutton")
     keyboard.appendChild(button);
 
 }
 
 document.addEventListener("keydown", (event)=>{
     if (event.repeat) return;
-    for (let i=0; i<notes.length; i++){
-        if (event.key===keyboardkeys[i]){
-            playnote(notes[i])
+    for (let i=0; i<lightnotes.length; i++){
+        if (event.key===lightkeys[i]){
+            playnote(lightnotes[i])
+        }
+    }
+})
+
+document.addEventListener("keydown", (event)=>{
+    if (event.repeat) return;
+    for (let i=0; i<darknotes.length; i++){
+        if (event.key===darkkeys[i]){
+            playnote(darknotes[i])
         }
     }
 })

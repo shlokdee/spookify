@@ -3,7 +3,26 @@ body{
     color: white;
 }
 
-#keyboard .whitebutton{
+#keyboard button{
+
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin: 5px;
+    color:white;
+}
+
+#keyboard button:hover{
+    background-color: darkslategrey;
+}
+
+#keyboard .lightbutton{
     height: 150px;
     width: 40px;
+}
+#keyboard .darkbutton{
+    height:100px;
+    width:40px;
+    background-color: black;
+
 }
