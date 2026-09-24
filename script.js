@@ -1,8 +1,9 @@
 
 
+    var audioCtx = new AudioContext();
 
 function playnote(freq){
-    var audioCtx = new AudioContext();
+    audioCtx.resume()
     var tone = audioCtx.createOscillator();
     var volume = audioCtx.createGain();
     tone.type = 'sine';
@@ -11,5 +12,6 @@ function playnote(freq){
     tone.connect(volume);
     volume.connect(audioCtx.destination);
     tone.start();
+    volume.gain.linearRampToValueAtTime(0.001, audioCtx.currentTime+1)
     tone.stop(audioCtx.currentTime+1);
 }
