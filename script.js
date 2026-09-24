@@ -16,6 +16,7 @@ for (let i=0; i<notes.length; i++){
 }
 
 document.addEventListener("keydown", (event)=>{
+    if (event.repeat) return;
     for (let i=0; i<notes.length; i++){
         if (event.key===keyboardkeys[i]){
             playnote(notes[i])
@@ -27,12 +28,38 @@ function playnote(freq){
     audioCtx.resume()
     var tone = audioCtx.createOscillator();
     var volume = audioCtx.createGain();
-    tone.type = 'sine';
+    var tone2=audioCtx.createOscillator();
+
+    var lfo = audioCtx.createOscillator();
+    var lfogain = audioCtx.createGain()
+
+    tone.type = 'sawtooth';
+    tone2.type="sawtooth";
     tone.frequency.value = freq;
-    volume.gain.value = 0.5;
+
+
+    lfo.type="sine"
+    lfo.frequency.value=15;
+    lfogain.gain.value=15;
+
+    tone2.frequency.value=freq;
+    tone2.detune.value=50;
+
+    lfo.connect(lfogain);
+    lfogain.connect(tone.frequency)
+
+
+    volume.gain.value = 0.2;
     tone.connect(volume);
+    tone2.connect(volume);
     volume.connect(audioCtx.destination);
+
+    
+    lfo.start();
     tone.start();
+    tone2.start();
     volume.gain.linearRampToValueAtTime(0.001, audioCtx.currentTime+1)
     tone.stop(audioCtx.currentTime+1);
+    tone2.stop(audioCtx.currentTime+1);
+    lfo.stop(audioCtx.currentTime+1);
 }
