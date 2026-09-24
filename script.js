@@ -1,4 +1,6 @@
 
+var lightbuttons=[]
+var darkbuttons=[]
 
     var audioCtx = new AudioContext();
 var lightnotes=[261.63, 293.66, 329.63, 349.23, 392, 440, 493.88]
@@ -15,6 +17,7 @@ for (let i=0; i<lightnotes.length; i++){
     })
     button.classList.add("lightbutton")
     keyboard.appendChild(button);
+    lightbuttons.push(button)
 
 }
 
@@ -26,6 +29,7 @@ for (let i=0; i<darknotes.length; i++){
     })
     button.classList.add("darkbutton")
     keyboard.appendChild(button);
+    darkbuttons.push(button)
 
 }
 
@@ -34,15 +38,36 @@ document.addEventListener("keydown", (event)=>{
     for (let i=0; i<lightnotes.length; i++){
         if (event.key===lightkeys[i]){
             playnote(lightnotes[i])
+            lightbuttons[i].classList.add("active")
         }
     }
 })
+
+document.addEventListener("keyup", (event)=>{
+    if (event.repeat) return;
+    for (let i=0; i<lightnotes.length; i++){
+        if (event.key===lightkeys[i]){
+            lightbuttons[i].classList.remove("active")
+        }
+    }
+})
+
 
 document.addEventListener("keydown", (event)=>{
     if (event.repeat) return;
     for (let i=0; i<darknotes.length; i++){
         if (event.key===darkkeys[i]){
             playnote(darknotes[i])
+            darkbuttons[i].classList.add("active")
+        }
+    }
+})
+
+document.addEventListener("keyup", (event)=>{
+    if (event.repeat) return;
+    for (let i=0; i<darknotes.length; i++){
+        if (event.key===darkkeys[i]){
+            darkbuttons[i].classList.remove("active")
         }
     }
 })

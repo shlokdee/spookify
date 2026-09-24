@@ -1,8 +1,25 @@
+
 body{
     background-color: black;
     color: white;
-}
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 
+}
+#dropper{
+    height:300px;
+    width: 500px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+#keyboard{
+    display: inline-flex;
+    position: relative;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 20px;
+}
 #keyboard button{
 
     background-color: black;
@@ -10,9 +27,13 @@ body{
     border-radius: 10px;
     margin: 5px;
     color:white;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 10px;
 }
 
-#keyboard button:hover{
+#keyboard button:hover, #keyboard button.active{
     background-color: darkslategrey;
 }
 
@@ -21,8 +42,18 @@ body{
     width: 40px;
 }
 #keyboard .darkbutton{
+    position: absolute;
     height:100px;
     width:40px;
     background-color: black;
+    z-index: 2;
+    
+    
 
 }
+
+#keyboard .darkbutton:nth-child(8) { left: 44px; }
+#keyboard .darkbutton:nth-child(9) { left: 94px; }
+#keyboard .darkbutton:nth-child(10) { left: 194px; }
+#keyboard .darkbutton:nth-child(11) { left: 244px; }
+#keyboard .darkbutton:nth-child(12) { left: 294px; }
