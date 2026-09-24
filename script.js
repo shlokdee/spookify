@@ -1,6 +1,16 @@
 
 
     var audioCtx = new AudioContext();
+var notes=[261.63, 293.66, 329.63, 349.23, 392, 440, 493.88]
+var keyboard=document.getElementById("keyboard")
+
+for (let i=0; i<notes.length; i++){
+    const button=document.createElement("button");
+    button.addEventListener("click", playnote(notes[i]))
+    button.classList.add("whitebutton")
+    keyboard.appendChild(button);
+
+}
 
 function playnote(freq){
     audioCtx.resume()
