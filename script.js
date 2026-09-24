@@ -2,6 +2,7 @@
 
     var audioCtx = new AudioContext();
 var notes=[261.63, 293.66, 329.63, 349.23, 392, 440, 493.88]
+var keyboardkeys=["a","s","d","f","g","h","j" ]
 var keyboard=document.getElementById("keyboard")
 
 for (let i=0; i<notes.length; i++){
@@ -13,6 +14,14 @@ for (let i=0; i<notes.length; i++){
     keyboard.appendChild(button);
 
 }
+
+document.addEventListener("keydown", (event)=>{
+    for (let i=0; i<notes.length; i++){
+        if (event.key===keyboardkeys[i]){
+            playnote(notes[i])
+        }
+    }
+})
 
 function playnote(freq){
     audioCtx.resume()
