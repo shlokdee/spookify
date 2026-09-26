@@ -72,6 +72,15 @@ document.addEventListener("keyup", (event)=>{
     }
 })
 
+var tonetype= document.getElementById("tonetype").value
+var detunetype=document.getElementById("detunetype").value
+var detuneval=document.getElementById("detuneval").value;
+var lfotype=document.getElementById("lfotype").value
+var lfofreq=15
+var lfogain=15
+var volgain=0.2
+
+
 function playnote(freq){
     audioCtx.resume()
     var tone = audioCtx.createOscillator();
@@ -81,23 +90,23 @@ function playnote(freq){
     var lfo = audioCtx.createOscillator();
     var lfogain = audioCtx.createGain()
 
-    tone.type = 'sawtooth';
-    tone2.type="sawtooth";
+    tone.type = tonetype
+    tone2.type=detunetype;
     tone.frequency.value = freq;
 
 
-    lfo.type="sine"
-    lfo.frequency.value=15;
-    lfogain.gain.value=15;
+    lfo.type=lfotype
+    lfo.frequency.value=lfofreq;
+    lfogain.gain.value=lfogain;
 
     tone2.frequency.value=freq;
-    tone2.detune.value=50;
+    tone2.detune.value=detuneval;
 
     lfo.connect(lfogain);
     lfogain.connect(tone.frequency)
 
 
-    volume.gain.value = 0.2;
+    volume.gain.value = volgain;
     tone.connect(volume);
     tone2.connect(volume);
     volume.connect(audioCtx.destination);

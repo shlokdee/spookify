@@ -60,3 +60,18 @@ body{
 #keyboard .darkbutton:nth-child(10) { left: 194px; }
 #keyboard .darkbutton:nth-child(11) { left: 244px; }
 #keyboard .darkbutton:nth-child(12) { left: 294px; }
+
+
+#synth{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    width:500px;
+    height: auto;
+    padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 30px;
+        padding-bottom: 100px;
+
+    box-sizing: border-box;
+}
