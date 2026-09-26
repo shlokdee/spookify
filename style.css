@@ -74,4 +74,24 @@ body{
         padding-bottom: 100px;
 
     box-sizing: border-box;
+    margin-top:20px;
+    border-radius: 10px;
+}
+
+.dropdown select{
+    margin: 10px;
+
+}
+
+.num input{
+    width:80px;
+    margin: 10px;
+}
+
+.dropdown{
+    padding-bottom: 20px;
+}
+
+.num{
+    padding-bottom: 20px;
 }

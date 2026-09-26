@@ -72,16 +72,20 @@ document.addEventListener("keyup", (event)=>{
     }
 })
 
-var tonetype= document.getElementById("tonetype").value
-var detunetype=document.getElementById("detunetype").value
-var detuneval=document.getElementById("detuneval").value;
-var lfotype=document.getElementById("lfotype").value
-var lfofreq=document.getElementById("lfofreq").value
-var lfogainselec=document.getElementById("lfogainselec").value
-var volgain=document.getElementById("volgain").value
+
 
 
 function playnote(freq){
+
+
+    var tonetype= document.getElementById("tonetype").value
+var detunetype=document.getElementById("detunetype").value
+var detuneval=parseFloat(document.getElementById("detuneval").value)
+var lfotype=document.getElementById("lfotype").value
+var lfofreq=parseFloat(document.getElementById("lfofreq").value)
+var lfogainselec=parseFloat(document.getElementById("lfogainselec").value)
+var volgain=parseFloat(document.getElementById("volgain").value)
+
     audioCtx.resume()
     var tone = audioCtx.createOscillator();
     var volume = audioCtx.createGain();

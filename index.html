@@ -14,41 +14,56 @@
     
     </div>
     <div id="synth">
-        <select name="tonetype" id="tonetype">
-            <option value="sawtooth" selected>sawtooth</option>
-            <option value="triangle">triangle</option>
-            <option value="sine">sine</option>
-            <option value="square">square</option>
-        </select>
-        <label for="tonetype">Select the type of main tone</label>
+        
+        <div class="dropdown">
+            <select name="tonetype" id="tonetype">
+                <option value="sawtooth" selected>sawtooth</option>
+                <option value="triangle">triangle</option>
+                <option value="sine">sine</option>
+                <option value="square">square</option>
+            </select>
+            <label for="tonetype">Select the type of main tone</label>
+        </div>
 
-        <select name="detunetype" id="detunetype">
-            <option value="sawtooth" selected>sawtooth</option>
-            <option value="triangle">triangle</option>
-            <option value="sine">sine</option>
-            <option value="square">square</option>
-        </select>
-        <label for="detunetype">Select the type of detune tone</label>
+        <div class="dropdown">
+            <select name="detunetype" id="detunetype">
+                <option value="sawtooth" selected>sawtooth</option>
+                <option value="triangle">triangle</option>
+                <option value="sine">sine</option>
+                <option value="square">square</option>
+            </select>
+            <label for="detunetype">Select the type of detune tone</label>
+        </div>
 
-        <select name="lfotype" id="lfotype">
-            <option value="sawtooth">sawtooth</option>
-            <option value="triangle">triangle</option>
-            <option value="sine" selected>sine</option>
-            <option value="square">square</option>
-        </select>
-        <label for="lfotype">Select the type of lfo pattern</label>
+        <div class="dropdown">
+            <select name="lfotype" id="lfotype">
+                <option value="sawtooth">sawtooth</option>
+                <option value="triangle">triangle</option>
+                <option value="sine" selected>sine</option>
+                <option value="square">square</option>
+            </select>
+            <label for="lfotype">Select the type of lfo pattern</label>
+        </div>
 
-        <input name="detuneval" type="number" value="50" id="detuneval">
-        <label for="detuneval">set the number of detune cents (100 cents = 1 semitone)</label>
+        <div class="num">
+            <input name="detuneval" type="number" value="50" id="detuneval">
+            <label for="detuneval">set the number of detune cents (100 cents = 1 semitone)</label>
+        </div>
 
-        <input name="lfofreq" type="number" value="15" id="lfofreq">
-        <label for="lfofreq">set the frequency for the low frequency oscillator</label>
+        <div class="num">
+            <input name="lfofreq" type="number" value="15" id="lfofreq">
+            <label for="lfofreq">set the frequency for the low frequency oscillator</label>
+        </div>
 
-        <input name="lfogainselec" type="number" value="15" id="lfogainselec">
-        <label for="lfogainselec">set the gain for the low frequency oscillator</label>
+        <div class="num">
+            <input name="lfogainselec" type="number" value="15" id="lfogainselec">
+            <label for="lfogainselec">set the gain for the low frequency oscillator</label>
+        </div>
 
-        <input name="volgain" type="number" value="0.2" id="volgain">
-        <label for="volgain">set the gain for master volume (sound will tear if sum of gains of simultaneous key presses goes above one)</label>
+        <div class="num">
+            <input name="volgain" type="number" value="0.2" id="volgain">
+            <label for="volgain">set the gain for master volume (sound will tear if sum of gains of simultaneous key presses goes above one)</label>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
