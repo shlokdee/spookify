@@ -76,9 +76,9 @@ var tonetype= document.getElementById("tonetype").value
 var detunetype=document.getElementById("detunetype").value
 var detuneval=document.getElementById("detuneval").value;
 var lfotype=document.getElementById("lfotype").value
-var lfofreq=15
-var lfogain=15
-var volgain=0.2
+var lfofreq=document.getElementById("lfofreq").value
+var lfogainselec=document.getElementById("lfogainselec").value
+var volgain=document.getElementById("volgain").value
 
 
 function playnote(freq){
@@ -97,7 +97,7 @@ function playnote(freq){
 
     lfo.type=lfotype
     lfo.frequency.value=lfofreq;
-    lfogain.gain.value=lfogain;
+    lfogain.gain.value=lfogainselec;
 
     tone2.frequency.value=freq;
     tone2.detune.value=detuneval;
