@@ -2,6 +2,24 @@
 var lightbuttons=[]
 var darkbuttons=[]
 
+
+var patterns = {
+    "pattern1": [2, 3, 2, 6, 3, 2, 3, 0, 2, 3, 2, 6, 5, 3, 2, 6],
+    "pattern2": [6, 1, 3, 1, 6, 1, 3, 6, 2, 3, 2, 6, 3, 1, 6, 6],
+    "pattern3": [2, 3, 2, 0, 2, 3, 6, 3, 2, 3, 2, 0, 1, 0, 6, 2],
+    "pattern4": [2, 0, 3, 0, 2, 0, 6, 0, 2, 3, 6, 3, 2, 0, 6, 0],
+    "pattern5": [5, 2, 3, 2, 5, 2, 3, 6, 5, 2, 3, 2, 1, 0, 6, 5]
+};
+
+const patternselect=document.getElementById("patterns")
+for (let i in patterns){
+    const option=document.createElement("option")
+    option.value=i;
+    option.textContent=i
+    patternselect.appendChild(option)
+}
+
+
     var audioCtx = new AudioContext();
 var lightnotes=[261.63, 293.66, 329.63, 349.23, 392, 440, 493.88]
 var darknotes=[277.18, 311.13, 369.99, 415.30, 466.16]
@@ -42,6 +60,15 @@ document.addEventListener("keydown", (event)=>{
         }
     }
 })
+
+
+document.addEventListener("keydown", (event)=>{
+    if (event.repeat) return;
+    if (waiting==-1) return
+    if (event.key===lightkeys[pattern[waiting]]){
+        intplayed[waiting]=1
+        waiting=-1
+    }})
 
 document.addEventListener("keyup", (event)=>{
     if (event.repeat) return;
@@ -140,25 +167,32 @@ ctx.fillStyle="#39FF14";
 var y=290;
 var speed=3.33;
 
-var pattern=[2,5,2,6]
+
 var delay=400
 
 var animid=null
+var pattern=[]
 
+var autoplayed=[]
+var intplayed=[]
 
-var played=[]
-
-var checkedornot=false
+var autoplaycheckedornot=false
+var intplaycheckedornot=false
+var waiting=-1
 
 function animate(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (waiting==-1){
     y += speed;
-    
+    }
     for (let i=0;i<pattern.length; i++){
         ctx.fillRect(xposlight[pattern[i]], y-i*80, 40, 80)
-        if (checkedornot && (y-i*80)>=290 && played[i]==0){
+        if (autoplaycheckedornot && (y-i*80)>=210 && autoplayed[i]==0){
             playnote(lightnotes[pattern[i]])
-            played[i]=1
+            autoplayed[i]=1
+        }
+        if (intplaycheckedornot && (y-i*80)>=210 && waiting==-1 && intplayed[i]==0){
+            waiting=i
         }
 
     }
@@ -173,11 +207,29 @@ function animate(){
     
 }
 
+
+document.getElementById("autoplay").addEventListener("change", function(){
+    if (this.checked){
+        document.getElementById("intplay").checked=false
+    }
+})
+
+document.getElementById("intplay").addEventListener("change", function(){
+    if (this.checked){
+        document.getElementById("autoplay").checked=false
+    }
+})
+
 function animationstart(){
-    checkedornot=document.getElementById("autoplay").checked
-    played=[]
+    pattern=patterns[patternselect.value]
+    autoplaycheckedornot=document.getElementById("autoplay").checked
+    intplaycheckedornot=document.getElementById("intplay").checked
+    waiting=-1
+    autoplayed=[]
+    
     for (let i=0; i<pattern.length; i++){
-    played.push(0)
+    autoplayed.push(0)
+    intplayed.push(0)
 }
     if (animid){
         cancelAnimationFrame(animid)

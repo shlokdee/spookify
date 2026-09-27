@@ -8,11 +8,17 @@
 </head>
 <body>
     <h1>spookify</h1>
+    <p>a spooky synth and playalong piano!</p><br><p>choose a pattern from here or play your own thing!</p>
     <div class="options">
+        <select name="patterns" id="patterns"></select>
         <button onclick="animationstart()">Start</button>
         <div class="autoplay">
             <input type="checkbox" name="autoplay" id="autoplay">
             <label for="autoplay">Autoplay?</label>
+        </div>
+        <div class="intplay">
+            <input type="checkbox" name="intplay" id="intplay">
+            <label for="intplay">interactive play?</label>
         </div>
     </div>
     <canvas id="dropper" width="500" height="300"></canvas>
