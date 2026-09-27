@@ -99,7 +99,9 @@ body{
 
 .options{
     display: flex;
+    margin: 10px;
 }
 .options button{
     margin-right: 10px;
+    margin-left: 10px;
 }
