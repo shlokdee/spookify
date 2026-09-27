@@ -95,3 +95,11 @@ body{
 .num{
     padding-bottom: 20px;
 }
+
+
+.options{
+    display: flex;
+}
+.options button{
+    margin-right: 10px;
+}

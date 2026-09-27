@@ -8,7 +8,13 @@
 </head>
 <body>
     <h1>spookify</h1>
-    <button onclick="animationstart()">Start</button>
+    <div class="options">
+        <button onclick="animationstart()">Start</button>
+        <div class="autoplay">
+            <input type="checkbox" name="autoplay" id="autoplay">
+            <label for="autoplay">Autoplay?</label>
+        </div>
+    </div>
     <canvas id="dropper" width="500" height="300"></canvas>
     <div id="keyboard">
     
@@ -17,20 +23,20 @@
         
         <div class="dropdown">
             <select name="tonetype" id="tonetype">
-                <option value="sawtooth" selected>sawtooth</option>
+                <option value="sawtooth" >sawtooth</option>
                 <option value="triangle">triangle</option>
                 <option value="sine">sine</option>
-                <option value="square">square</option>
+                <option value="square" selected>square</option>
             </select>
             <label for="tonetype">Select the type of main tone</label>
         </div>
 
         <div class="dropdown">
             <select name="detunetype" id="detunetype">
-                <option value="sawtooth" selected>sawtooth</option>
+                <option value="sawtooth" >sawtooth</option>
                 <option value="triangle">triangle</option>
                 <option value="sine">sine</option>
-                <option value="square">square</option>
+                <option value="square" selected>square</option>
             </select>
             <label for="detunetype">Select the type of detune tone</label>
         </div>

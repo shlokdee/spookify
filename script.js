@@ -145,11 +145,21 @@ var delay=400
 
 var animid=null
 
+
+var played=[]
+
+var checkedornot=false
+
 function animate(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     y += speed;
+    
     for (let i=0;i<pattern.length; i++){
         ctx.fillRect(xposlight[pattern[i]], y-i*80, 40, 80)
+        if (checkedornot && (y-i*80)>=290 && played[i]==0){
+            playnote(lightnotes[pattern[i]])
+            played[i]=1
+        }
 
     }
 
@@ -164,7 +174,11 @@ function animate(){
 }
 
 function animationstart(){
-
+    checkedornot=document.getElementById("autoplay").checked
+    played=[]
+    for (let i=0; i<pattern.length; i++){
+    played.push(0)
+}
     if (animid){
         cancelAnimationFrame(animid)
     }
